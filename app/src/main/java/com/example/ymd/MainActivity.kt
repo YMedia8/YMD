@@ -1,8 +1,7 @@
 package com.example.ymd
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ymd.databinding.ActivityMainBinding
 import com.example.ymd.databinding.FragmentHomeBinding
@@ -50,4 +49,5 @@ class MainActivity : AppCompatActivity() {
             }
         }.attach()
     }
+
 }
