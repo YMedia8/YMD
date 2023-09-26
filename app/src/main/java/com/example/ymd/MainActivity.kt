@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 0 -> tab.setIcon(R.drawable.home).text = "com/example/ymd/Home"
                 1 -> tab.setIcon(R.drawable.hot).text = "com/example/ymd/Hot"
                 2 -> tab.setIcon(R.drawable.mymedia).text = "com/example/ymd/Mypage"
-                3 -> tab.setIcon(R.drawable.search).text = "Search"
+                3 -> tab.setIcon(R.drawable.search).text = "com/example/ymd/retrofit/Search"
             }
         }.attach()
     }
