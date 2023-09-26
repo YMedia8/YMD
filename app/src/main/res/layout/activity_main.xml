@@ -9,6 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
+        android:background="#AFAFAF"
         android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,21 +17,11 @@
 
 
         <ImageView
-            android:id="@+id/main_search"
+            android:id="@+id/main_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/search" />
-
-        <ImageView
-            android:id="@+id/main_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/main_search"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/notifications" />
 
