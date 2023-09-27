@@ -6,17 +6,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 object YMDClient {
-    private const val DUST_BASE_URL ="https://www.googleapis.com/youtube/v3/"
-
-    val api: HotTopicInterface
-        get() = instanse.create(HotTopicInterface::class.java)
+    val api: Interface
+        get() = instanse.create(Interface::class.java)
 
         private val instanse: Retrofit
         private get(){
             val gson = GsonBuilder().setLenient().create()
 
             return Retrofit.Builder()
-                .baseUrl(DUST_BASE_URL)
+                .baseUrl(Constans.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
         }
