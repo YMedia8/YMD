@@ -5,7 +5,7 @@
     android:id="@+id/searchFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search.SearchFragment">
+    tools:context=".search.SearchFragment">
 
         <ImageView
             android:id="@+id/search_Btn"

@@ -1,8 +1,8 @@
 package com.example.ymd.retrofit
 
-import com.example.ymd.retrofit.Categories.Categories
-import com.example.ymd.retrofit.Search.Search
-import com.example.ymd.retrofit.YoutubeData.VideoData
+import com.example.ymd.retrofit.categories.Categories
+import com.example.ymd.retrofit.search.Search
+import com.example.ymd.retrofit.youtubeData.VideoData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,16 +11,17 @@ import retrofit2.http.Query
 interface Interface {
 
     @GET("videos")
-    suspend fun video (
-        @Query("key") key : String,
-        @Query("part") part : String?,
-        @Query("chart") chart :String?,
-        @Query("maxResults") maxResults: Int = 10,
+    fun video (
+        @Query("part") part : String,
+        @Query("chart") chart :String,
+        @Query("maxResults") maxResults: Int,
+        @Query("regionCode") regionCode :String,
+        @Query("key") apiKey: String
     ):  Call<VideoData?>
 
 
     @GET("videoCategories")
-    suspend fun category (
+    fun category (
         @Query("key") key : String,
         @Query("part") part : String?,
         @Query("id") id : String?,

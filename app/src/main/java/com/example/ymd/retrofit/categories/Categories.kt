@@ -1,4 +1,4 @@
-package com.example.ymd.retrofit.Categories
+package com.example.ymd.retrofit.categories
 
 
 import com.google.gson.annotations.SerializedName

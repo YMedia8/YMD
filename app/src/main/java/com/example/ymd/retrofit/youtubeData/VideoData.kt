@@ -1,9 +1,9 @@
-package com.example.ymd.retrofit.YoutubeData
+package com.example.ymd.retrofit.youtubeData
 
 data class VideoData(
     val kind: String,
     val etag: String,
-    val items: ArrayList<VideoItems>
+    val items: List<VideoItems>
 )
 
 data class VideoItems(
