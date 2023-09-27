@@ -1,6 +1,6 @@
 package com.example.ymd.retrofit
 
-import com.example.ymd.retrofit.YoutubeData.CategoryData
+import com.example.ymd.retrofit.Categories.Categories
 import com.example.ymd.retrofit.YoutubeData.VideoData
 import retrofit2.Call
 import retrofit2.http.GET
@@ -20,5 +20,5 @@ interface HotTopicInterface {
         @Query("part") part : String?,
         @Query("id") id : String?,
         @Query("regionCode") regionCode : String?,
-    ): Call<CategoryData?>
+    ): Call<Categories?>
 }
