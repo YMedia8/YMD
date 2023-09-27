@@ -1,4 +1,4 @@
-package com.example.ymd.Search
+package com.example.ymd.search
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.ymd.databinding.FragmentSearchBinding
 import com.example.ymd.retrofit.Constants
-import com.example.ymd.retrofit.Search.Search
+import com.example.ymd.retrofit.search.Search
 import com.example.ymd.retrofit.YMDClient.api
 import retrofit2.Call
 import retrofit2.Callback

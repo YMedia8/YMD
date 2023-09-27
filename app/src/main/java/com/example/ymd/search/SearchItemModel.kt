@@ -1,4 +1,4 @@
-package com.example.ymd.Search
+package com.example.ymd.search
 
 data class SearchItemModel (
     var title : String,

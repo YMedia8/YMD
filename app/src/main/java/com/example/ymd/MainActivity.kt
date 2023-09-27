@@ -3,11 +3,11 @@ package com.example.ymd
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.ymd.Home.HomeFragment
-import com.example.ymd.Hot.HotFragment
-import com.example.ymd.Mypage.MypageFragment
+import com.example.ymd.hot.HotFragment
+import com.example.ymd.home.HomeFragment
+import com.example.ymd.mypage.MypageFragment
 import com.example.ymd.databinding.ActivityMainBinding
-import com.example.ymd.Search.SearchFragment
+import com.example.ymd.search.SearchFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.ymd.retrofit.Search
+package com.example.ymd.retrofit.search
 
 
 import com.google.gson.annotations.SerializedName
