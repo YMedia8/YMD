@@ -14,7 +14,7 @@ object YMDClient {
             val gson = GsonBuilder().setLenient().create()
 
             return Retrofit.Builder()
-                .baseUrl(Constans.BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
         }
