@@ -1,6 +1,6 @@
 package com.example.ymd.retrofit
 
-object Constans {
+object Constants {
 
     // youtube  API의 기본 URL입니다.
     const val BASE_URL = "https://www.googleapis.com/youtube/v3/"

@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.tableLayout, binding.mainViewpager) { tab, position ->
             when (position) {
-                0 -> tab.setIcon(R.drawable.home).text = "com/example/ymd/Home"
-                1 -> tab.setIcon(R.drawable.hot).text = "com/example/ymd/Hot"
-                2 -> tab.setIcon(R.drawable.mymedia).text = "com/example/ymd/Mypage"
-                3 -> tab.setIcon(R.drawable.search).text = "com/example/ymd/retrofit/Search"
+                0 -> tab.setIcon(R.drawable.home).text = "Home"
+                1 -> tab.setIcon(R.drawable.hot).text = "Hot"
+                2 -> tab.setIcon(R.drawable.mymedia).text = "Mypage"
+                3 -> tab.setIcon(R.drawable.search).text = "Search"
             }
         }.attach()
     }
