@@ -60,8 +60,6 @@ class HotFragment : Fragment() {
         }
     }
 
-
-
     private fun fetchImageResults() {
         api.video(
             part = "snippet",
