@@ -44,7 +44,7 @@ class HotFragment : Fragment() {
 
     private fun setupViews() {
         // RecyclerView 설정
-        gridManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        gridManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         binding.hotrecyclerViewList.layoutManager = gridManager
 
         adapter = HotAdapter(mContext)
@@ -76,11 +76,11 @@ class HotFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.items?.forEach {
-                        val id = it.id
+                        val descriptor = it.snippet.description
                         val title = it.snippet.title
                         val thumbnail = it.snippet.thumbnails.high.url
 
-                        resItems.add(HotItemModel(id, title, thumbnail))
+                        resItems.add(HotItemModel(descriptor, title, thumbnail))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")
