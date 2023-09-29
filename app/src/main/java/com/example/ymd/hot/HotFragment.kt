@@ -77,8 +77,9 @@ class HotFragment : Fragment() {
                         val descriptor = it.snippet.description
                         val title = it.snippet.title
                         val thumbnail = it.snippet.thumbnails.high.url
+                        val id = it.id
 
-                        resItems.add(HotItemModel(descriptor, title, thumbnail))
+                        resItems.add(HotItemModel(descriptor, title, thumbnail, id))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")

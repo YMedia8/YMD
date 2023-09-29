@@ -1,7 +1,8 @@
 package com.example.ymd.hot
 
 data class HotItemModel(
-    val id: String,
+    val description: String,
     val title: String,
-    val thumbnail: String
+    val thumbnail: String,
+    val id: String,
 )

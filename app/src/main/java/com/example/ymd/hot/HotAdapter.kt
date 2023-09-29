@@ -37,7 +37,7 @@ class HotAdapter(private val mContext: Context) :
             .into(holder.hotthumbnail)
 
         holder.tv_title.text = currentItem.title
-        holder.hotsubtitle.text = currentItem.id
+        holder.hotsubtitle.text = currentItem.description
     }
 
     override fun getItemCount() = items.size
