@@ -2,7 +2,7 @@ package com.example.ymd.home.homeViewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ymd.home.HomeItemModel
+import com.example.ymd.home.homeItemModel.HomeItemModel
 
 class HomeViewModel : ViewModel() {
     val homeList: MutableLiveData<List<HomeItemModel>> by lazy {

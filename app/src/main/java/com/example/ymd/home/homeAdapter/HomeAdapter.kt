@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ymd.databinding.ItemRecyclerViewListBinding
-import com.example.ymd.home.HomeItemModel
+import com.example.ymd.home.homeItemModel.HomeItemModel
 
 class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerView.Adapter<HomeAdapter.Holder>(){
 
@@ -29,7 +29,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
             .load(videoUrl)
             .into(holder.video)
         holder.title.text = homeList[position].title
-        holder.subtitle.text = homeList[position].descriptor
+//        holder.subtitle.text = homeList[position].descriptor
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +39,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
     inner class Holder(binding: ItemRecyclerViewListBinding) : RecyclerView.ViewHolder(binding.root){
         var video = binding.imageView
         val title = binding.title
-        val subtitle = binding.subTitle
+//        val subtitle = binding.subTitle
     }
 
     fun updateData(newData: List<HomeItemModel>) {
