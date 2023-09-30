@@ -1,4 +1,4 @@
-package com.example.ymd.home
+package com.example.ymd.home.homeItemModel
 
 data class HomeItemModel(
     val thumbnail: String,

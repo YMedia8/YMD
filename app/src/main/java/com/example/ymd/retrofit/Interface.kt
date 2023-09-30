@@ -24,7 +24,6 @@ interface Interface {
     fun category (
         @Query("key") key : String,
         @Query("part") part : String?,
-        @Query("id") id : String?,
         @Query("regionCode") regionCode : String?,
     ): Call<Categories?>
 
