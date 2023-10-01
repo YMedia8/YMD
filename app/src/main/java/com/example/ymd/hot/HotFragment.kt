@@ -39,6 +39,8 @@ class HotFragment : Fragment() {
         setupViews()   // 뷰 초기 설정
         setupListeners() // 리스너 설정
 
+        fetchImageResults()
+
         return binding.root
     }
 
@@ -77,8 +79,9 @@ class HotFragment : Fragment() {
                         val descriptor = it.snippet.description
                         val title = it.snippet.title
                         val thumbnail = it.snippet.thumbnails.high.url
+                        val id = it.id
 
-                        resItems.add(HotItemModel(descriptor, title, thumbnail))
+                        resItems.add(HotItemModel(descriptor, title, thumbnail, id))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")
