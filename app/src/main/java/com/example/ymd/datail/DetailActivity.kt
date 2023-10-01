@@ -4,11 +4,9 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.ymd.R
-import com.example.ymd.databinding.FragmentHotBinding
 import com.example.ymd.hot.HotAdapter
 import com.example.ymd.hot.HotItemModel
 import com.example.ymd.retrofit.YMDClient
@@ -75,8 +73,9 @@ class DetailActivity : AppCompatActivity() {
                         val descriptor = it.snippet.description
                         val title = it.snippet.title
                         val thumbnail = it.snippet.thumbnails.high.url
+                        val id = it.id
 
-                        resItems.add(HotItemModel(descriptor, title, thumbnail))
+                        resItems.add(HotItemModel(descriptor, title, thumbnail, id))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")

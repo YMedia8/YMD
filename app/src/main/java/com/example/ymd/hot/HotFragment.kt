@@ -39,6 +39,8 @@ class HotFragment : Fragment() {
         setupViews()   // 뷰 초기 설정
         setupListeners() // 리스너 설정
 
+        fetchImageResults()
+
         return binding.root
     }
 
