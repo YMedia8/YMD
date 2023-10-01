@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ymd.R
 import com.example.ymd.databinding.HotItemBinding
+import com.example.ymd.datail.DetailActivity
 import com.example.ymd.mypage.MypageFragment
 
 class HotAdapter(private val mContext: Context) :
@@ -66,10 +67,10 @@ class HotAdapter(private val mContext: Context) :
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when (view.id) {
-//                R.id.thumbnail -> {
-//                    val intent = Intent(mContext, MypageFragment::class.java)
-//                    mContext.startActivity(intent)
-//                }
+                R.id.thumbnail -> {
+                    val intent = Intent(mContext, DetailActivity::class.java)
+                    mContext.startActivity(intent)
+                }
 //                R.id.plusbt -> {
 //                    val intent = Intent(mContext, MypageFragment::class.java)
 //                    mContext.startActivity(intent)

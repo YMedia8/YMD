@@ -5,4 +5,5 @@ data class HotItemModel(
     val title: String,
     val thumbnail: String,
     val id: String,
+    val favorites: Boolean = false
 )

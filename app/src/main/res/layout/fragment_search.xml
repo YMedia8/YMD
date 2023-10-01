@@ -7,27 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".search.SearchFragment">
 
+
         <ImageView
-            android:id="@+id/search_Btn"
+            android:id="@+id/searchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            android:background="@android:color/transparent"
             android:src="@drawable/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_rv"
-        android:layout_width="405dp"
-        android:layout_height="642dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/searchText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="70dp"
@@ -36,9 +28,18 @@
         android:ems="10"
         android:inputType="text"
         android:hint="검색"
-        app:layout_constraintEnd_toStartOf="@+id/search_Btn"
+        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

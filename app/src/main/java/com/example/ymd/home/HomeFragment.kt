@@ -11,8 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ymd.databinding.FragmentHomeBinding
 import com.example.ymd.home.homeAdapter.HomeAdapter
+import com.example.ymd.home.homeItemModel.CategoryItemModel
+import com.example.ymd.home.homeItemModel.HomeItemModel
+import com.example.ymd.home.homeViewModel.CategoryViewModel
 import com.example.ymd.home.homeViewModel.HomeViewModel
 import com.example.ymd.retrofit.YMDClient.api
+import com.example.ymd.retrofit.categories.Categories
 import com.example.ymd.retrofit.youtubeData.VideoData
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +28,9 @@ class HomeFragment : Fragment() {
     private var homeList = mutableListOf<HomeItemModel>()
     private var homeAdapter = HomeAdapter(homeList)
     private lateinit var viewModel: HomeViewModel
+    private lateinit var categoryViewModel: CategoryViewModel
     private var items = mutableListOf<HomeItemModel>()
+    private var categoryItems = mutableListOf<CategoryItemModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,11 +50,23 @@ class HomeFragment : Fragment() {
         }
 
         viewModel = ViewModelProvider(this@HomeFragment)[HomeViewModel::class.java]
+        categoryViewModel = ViewModelProvider(this@HomeFragment)[CategoryViewModel::class.java]
 
         viewModel.homeList.observe(viewLifecycleOwner, Observer { newVideo ->
             homeAdapter.updateData(newVideo)
         })
         mostVideoData()
+        categoryViewModel.categoryList.observe(viewLifecycleOwner, Observer { newCategory ->
+            val categoryTitleList = newCategory.map { it.title }
+            Log.d("category", "$categoryTitleList")
+            binding.spinnerViewSide.setItems(categoryTitleList)
+        })
+
+        categoryData()
+
+        binding.spinnerViewSide.setOnSpinnerItemSelectedListener<String> { _, _, _, text ->
+
+        }
     }
 
     private fun mostVideoData() {
@@ -80,6 +98,36 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call<VideoData?>, t: Throwable){
                 Log.e("#api", "실패: ${t.message}")
             }
+        })
+    }
+
+    private fun categoryData(){
+        api.category(
+            part = "snippet",
+            key = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU",
+            regionCode = "KR"
+        ).enqueue(object : Callback<Categories?>{
+            override fun onResponse(call: Call<Categories?>, response: Response<Categories?>) {
+                if (response.isSuccessful){
+                    response.body()?.items?.forEach {
+                        val title = it.snippet.title
+                        val filter = it.snippet.assignable
+                        val channel = it.snippet.channelId
+
+                       if (filter){
+                           categoryItems.add(CategoryItemModel(title, filter, channel))
+                       }
+                    }
+                } else {
+                    Log.e("api", "Error: ${response.errorBody()}")
+                }
+                categoryViewModel.category(categoryItems)
+            }
+
+            override fun onFailure(call: Call<Categories?>, t: Throwable) {
+                Log.e("#api", "실패: ${t.message}")
+            }
+
         })
     }
 }
