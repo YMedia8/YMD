@@ -11,12 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ymd.databinding.FragmentHomeBinding
 import com.example.ymd.home.homeAdapter.HomeAdapter
+import com.example.ymd.home.homeAdapter.com.example.ymd.home.homeAdapter.CategoryVideoAdapter
 import com.example.ymd.home.homeItemModel.CategoryItemModel
+import com.example.ymd.home.homeItemModel.CategoryVideoItemModel
 import com.example.ymd.home.homeItemModel.HomeItemModel
+import com.example.ymd.home.homeViewModel.CategoryVideoViewModel
 import com.example.ymd.home.homeViewModel.CategoryViewModel
 import com.example.ymd.home.homeViewModel.HomeViewModel
 import com.example.ymd.retrofit.YMDClient.api
 import com.example.ymd.retrofit.categories.Categories
+import com.example.ymd.retrofit.search.Search
 import com.example.ymd.retrofit.youtubeData.VideoData
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,12 +29,20 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
 
     private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+
     private var homeList = mutableListOf<HomeItemModel>()
+    private var categoryVideoList = mutableListOf<CategoryVideoItemModel>()
+
     private var homeAdapter = HomeAdapter(homeList)
+    private var categoryVideoAdapter = CategoryVideoAdapter(categoryVideoList)
+
     private lateinit var viewModel: HomeViewModel
     private lateinit var categoryViewModel: CategoryViewModel
+    private lateinit var categoryVideoViewModel: CategoryVideoViewModel
+
     private var items = mutableListOf<HomeItemModel>()
     private var categoryItems = mutableListOf<CategoryItemModel>()
+    private var categoryVideoItems = mutableListOf<CategoryVideoItemModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,8 +61,14 @@ class HomeFragment : Fragment() {
 
         }
 
+        binding.recyclerViewCategory.apply {
+            adapter = categoryVideoAdapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
+
         viewModel = ViewModelProvider(this@HomeFragment)[HomeViewModel::class.java]
         categoryViewModel = ViewModelProvider(this@HomeFragment)[CategoryViewModel::class.java]
+        categoryVideoViewModel = ViewModelProvider(this@HomeFragment)[CategoryVideoViewModel::class.java]
 
         viewModel.homeList.observe(viewLifecycleOwner, Observer { newVideo ->
             homeAdapter.updateData(newVideo)
@@ -65,8 +83,15 @@ class HomeFragment : Fragment() {
         categoryData()
 
         binding.spinnerViewSide.setOnSpinnerItemSelectedListener<String> { _, _, _, text ->
-
+            categoryVideoViewModel.clearCategoryVideo()
+            categoryVideoItems.clear()
+            categoryVideo(text)
         }
+        categoryVideoViewModel.categoryVideoList.observe(viewLifecycleOwner, Observer { newCategoryVideo ->
+            if (newCategoryVideo != null) {
+                categoryVideoAdapter.updateData(newCategoryVideo)
+            }
+        })
     }
 
     private fun mostVideoData() {
@@ -125,6 +150,34 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<Categories?>, t: Throwable) {
+                Log.e("#api", "실패: ${t.message}")
+            }
+
+        })
+    }
+
+    private fun categoryVideo(category: String){
+        api.search(
+            "KR",
+            "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU",
+            category
+        ).enqueue(object : Callback<Search?>{
+            override fun onResponse(call: Call<Search?>, response: Response<Search?>) {
+                if(response.isSuccessful){
+                    response.body()?.items?.forEach {
+                        val title = it.snippet.title
+                        val video = it.snippet.thumbnails.high.url
+                        val descriptor = it.snippet.description
+
+                        categoryVideoItems.add(CategoryVideoItemModel(video,title,descriptor))
+                    }
+                } else {
+                    Log.e("api", "Error: ${response.errorBody()}")
+                }
+                categoryVideoViewModel.categoryVideo(categoryVideoItems)
+            }
+
+            override fun onFailure(call: Call<Search?>, t: Throwable) {
                 Log.e("#api", "실패: ${t.message}")
             }
 

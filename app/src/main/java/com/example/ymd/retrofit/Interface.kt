@@ -34,6 +34,13 @@ interface Interface {
         @Query("key") key : String,
         @Query("q") query: String,
         @Query("part") part: String = "snippet",
-        @Query("maxResults") maxResults: Int = 25,
+        @Query("maxResults") maxResults: Int = 2,
     ): Call<Search?>
+
+    @GET("channels")
+    fun channels(
+        @Query("part") part : String,
+        @Query("id") id: String,
+        @Query("key") key: String
+    )
 }
