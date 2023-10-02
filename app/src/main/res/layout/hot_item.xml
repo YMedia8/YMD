@@ -6,28 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/thumbnail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:contentDescription="동영상"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <WebView
         android:id="@+id/hotweb"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/thumbnail"
-        app:layout_constraintEnd_toEndOf="@+id/thumbnail"
-        app:layout_constraintStart_toStartOf="@+id/thumbnail"
-        app:layout_constraintTop_toTopOf="@+id/thumbnail" />
+        android:layout_height="250dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/title" />
 
     <TextView
         android:id="@+id/title"
@@ -40,7 +30,9 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thumbnail" />
+        app:layout_constraintTop_toBottomOf="@+id/hotweb"
+        app:layout_constraintBottom_toTopOf="@+id/subTitle" />
+
 
     <TextView
         android:id="@+id/subTitle"

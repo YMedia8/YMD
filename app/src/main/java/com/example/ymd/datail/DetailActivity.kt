@@ -1,98 +1,75 @@
 package com.example.ymd.datail
 
 import android.content.Context
+import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.ymd.R
 import com.example.ymd.hot.HotAdapter
 import com.example.ymd.hot.HotItemModel
 import com.example.ymd.retrofit.YMDClient
 import com.example.ymd.retrofit.youtubeData.VideoData
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class DetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: DetailActivity
-    private lateinit var gridManager: StaggeredGridLayoutManager
     private lateinit var mContext: Context
-    private lateinit var adapter: HotAdapter
-    private var resItems: ArrayList<HotItemModel> = ArrayList()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail2)
+        setContentView(R.layout.activity_detail)
+        mContext = this
+
+        //받아올 사진 ID
+        val detailImage = findViewById<ImageView>(R.id.detail_image)
+        val imageData = intent.getStringExtra("thumbNailUrl")
+        Log.d("ddd","id = $imageData")
+
+        Glide.with(mContext)
+            .load(imageData)
+            .into(detailImage)
+
+        // 받아올 타이틀 ID
+        val detailTitle = findViewById<TextView>(R.id.detail_title)
+        val titleData = intent.getStringExtra("title")
+        detailTitle.text = titleData
+
+
+
+
+
 
         val btn_close = findViewById<ImageView>(R.id.detail_close) // 종료버튼 아이디가져오기
-
-
-
-
         btn_close.setOnClickListener {     // 종료 누르면 main화면으로 돌아가기
 
             finish()
         }
     }
-//    private fun setupViews() {
-//        // RecyclerView 설정
-//        gridManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-//        binding.hotrecyclerViewList.layoutManager = gridManager
-//
-//        adapter = HotAdapter(mContext)
-//        binding.hotrecyclerViewList.adapter = adapter
-//        binding.hotrecyclerViewList.itemAnimator = null
-//    }
+    private fun buttonAction(buttontype: String){
+        val like = findViewById<Button>(R.id.detail_like)
+        val share = findViewById<Button>(R.id.detail_share)
 
-//    private fun setupListeners() {
-//        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        binding.hotsearch.setOnClickListener {
-//            // 검색 버튼을 클릭할 때 최신 영상을 가져오는 함수 호출
-//            fetchImageResults()
+//        when(buttontype)
+//        "like" ->{
+//
 //        }
-//    }
-
-    private fun fetchImageResults() {
-        YMDClient.api.video(
-            part = "snippet",
-            chart = "mostPopular",
-            maxResults = 20,
-            regionCode = "KR",
-            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
-        ).enqueue(object : Callback<VideoData?> {
-            override fun onResponse(
-                call: Call<VideoData?>,
-                response: Response<VideoData?>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.items?.forEach {
-                        val descriptor = it.snippet.description
-                        val title = it.snippet.title
-                        val thumbnail = it.snippet.thumbnails.high.url
-                        val id = it.id
-
-                        resItems.add(HotItemModel(descriptor, title, thumbnail, id))
-                    }
-                } else {
-                    Log.e("api", "Error: ${response.errorBody()}")
-                }
-                adapter.items = resItems
-                adapter.notifyDataSetChanged()
-            }
-
-            override fun onFailure(call: Call<VideoData?>, t: Throwable) {
-                Log.e("#api", "실패: ${t.message}")
-            }
-        })
-    }
-
+//        "share"->{
 //
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        mContext = context
-//    }
+//        }
+    }
 }

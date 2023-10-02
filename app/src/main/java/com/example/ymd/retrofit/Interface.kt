@@ -3,6 +3,7 @@ package com.example.ymd.retrofit
 import com.example.ymd.retrofit.categories.Categories
 import com.example.ymd.retrofit.search.Search
 import com.example.ymd.retrofit.youtubeData.VideoData
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -34,7 +35,7 @@ interface Interface {
         @Query("key") key : String,
         @Query("q") query: String,
         @Query("part") part: String = "snippet",
-        @Query("maxResults") maxResults: Int = 2,
+        @Query("maxResults") maxResults: Int = 30,
     ): Call<Search?>
 
     @GET("channels")
