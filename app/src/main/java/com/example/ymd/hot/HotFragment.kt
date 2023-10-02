@@ -37,7 +37,6 @@ class HotFragment : Fragment() {
         binding = FragmentHotBinding.inflate(inflater, container, false)
 
         setupViews()
-
         fetchImageResults()
 
         return binding.root
