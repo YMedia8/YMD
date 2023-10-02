@@ -24,6 +24,7 @@ class HotFragment : Fragment() {
     private lateinit var adapter: HotAdapter
     private var resItems: ArrayList<HotItemModel> = ArrayList()
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context

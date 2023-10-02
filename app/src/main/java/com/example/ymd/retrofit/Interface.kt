@@ -17,7 +17,8 @@ interface Interface {
         @Query("chart") chart :String,
         @Query("maxResults") maxResults: Int,
         @Query("regionCode") regionCode :String,
-        @Query("key") apiKey: String
+        @Query("key") apiKey: String,
+        @Query("videoCategoryId") videoCategoryId : String = "0"
     ):  Call<VideoData?>
 
 
