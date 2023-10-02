@@ -36,8 +36,7 @@ class HotFragment : Fragment() {
     ): View? {
         binding = FragmentHotBinding.inflate(inflater, container, false)
 
-        setupViews()   // 뷰 초기 설정
-        setupListeners() // 리스너 설정
+        setupViews()
 
         fetchImageResults()
 
@@ -45,21 +44,12 @@ class HotFragment : Fragment() {
     }
 
     private fun setupViews() {
-        // RecyclerView 설정
         gridManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         binding.hotrecyclerViewList.layoutManager = gridManager
 
         adapter = HotAdapter(mContext)
         binding.hotrecyclerViewList.adapter = adapter
         binding.hotrecyclerViewList.itemAnimator = null
-    }
-
-    private fun setupListeners() {
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        binding.hotsearch.setOnClickListener {
-            // 검색 버튼을 클릭할 때 최신 영상을 가져오는 함수 호출
-            fetchImageResults()
-        }
     }
 
     private fun fetchImageResults() {
