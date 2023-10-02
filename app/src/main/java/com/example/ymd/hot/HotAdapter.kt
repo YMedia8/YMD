@@ -90,8 +90,11 @@ class HotAdapter(private val mContext: Context) :
                 }
                 R.id.inforbt -> {
                     val intent = Intent(mContext, DetailActivity::class.java)
-                    intent.putExtra("title",items[position].title)
-                    intent.putExtra("id",items[position].id)
+                    intent.apply {
+                        putExtra("thumbNailUrl", items[position].thumbnail)
+                        putExtra("title", items[position].title)
+
+                    }
                     mContext.startActivity(intent)
                 }
             }

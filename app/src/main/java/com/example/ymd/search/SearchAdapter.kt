@@ -50,9 +50,11 @@ class SearchAdapter(private val sContext : Context) : RecyclerView.Adapter<Recyc
         override fun onClick(v: View?) {
             val position=adapterPosition.takeIf { it!=RecyclerView.NO_POSITION } ?: return
             val intent = Intent(sContext, DetailActivity::class.java)
-            intent.putExtra("thumbNailUrl",items[position].url)
-            intent.putExtra("title",items[position].title)
-            intent.putExtra("date",items[position].dateTime)
+            intent.apply {
+                putExtra("thumbNailUrl",items[position].url)
+                putExtra("title",items[position].title)
+                putExtra("date",items[position].dateTime)
+            }
             sContext.startActivity(intent)
             sContext as MainActivity
             sContext.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
