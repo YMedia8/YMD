@@ -77,7 +77,8 @@ class SearchFragment : Fragment() {
                         response.body()!!.items.forEach {
                             val thumbnailUrl=it.snippet.thumbnails.default.url
                             val title=it.snippet.title
-                            searchItems.add(SearchItemModel(title,thumbnailUrl))
+                            val date=it.snippet.publishedAt.substring(0,10)
+                            searchItems.add(SearchItemModel(title,thumbnailUrl,date))
                         }
                     }
                     adapter.items=searchItems
