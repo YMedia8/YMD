@@ -93,6 +93,7 @@ class HotAdapter(private val mContext: Context) :
                     intent.apply {
                         putExtra("thumbNailUrl", items[position].thumbnail)
                         putExtra("title", items[position].title)
+                        putExtra("id",items[position].getVideoUrl())
 
                     }
                     mContext.startActivity(intent)
