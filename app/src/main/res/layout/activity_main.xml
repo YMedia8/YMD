@@ -44,6 +44,7 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:theme="@style/TabName"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabItem

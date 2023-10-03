@@ -3,7 +3,13 @@
     <style name="Base.Theme.YMD" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:background">#000000</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.YMD" parent="Base.Theme.YMD" />
+
+    <style name="TabName" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">#FFFFFF</item>
+    </style>
 </resources>

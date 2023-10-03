@@ -18,6 +18,42 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/game"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/orange"
+        android:text="게임"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/sports"
+        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
+    <Button
+        android:id="@+id/sports"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/orange"
+        android:text="스포츠"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/music"
+        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
+    <Button
+        android:id="@+id/music"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:backgroundTint="@color/orange"
+        android:text="음악"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+
     <EditText
         android:id="@+id/searchText"
         android:layout_width="match_parent"
@@ -26,7 +62,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:ems="10"
+        android:backgroundTint="@color/white"
         android:inputType="text"
+        android:textColor="@color/white"
         android:hint="검색"
         app:layout_constraintEnd_toStartOf="@+id/searchBtn"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +74,13 @@
         android:id="@+id/search_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+        app:layout_constraintTop_toBottomOf="@+id/searchText"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

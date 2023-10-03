@@ -54,6 +54,7 @@ class SearchAdapter(private val sContext : Context) : RecyclerView.Adapter<Recyc
                 putExtra("thumbNailUrl",items[position].url)
                 putExtra("title",items[position].title)
                 putExtra("date",items[position].dateTime)
+                putExtra("video",items[position].id)
             }
             sContext.startActivity(intent)
             sContext as MainActivity
