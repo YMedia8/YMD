@@ -3,8 +3,8 @@
     <style name="Base.Theme.YMD" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:background">#000000</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="Theme.YMD" parent="Base.Theme.YMD" />
