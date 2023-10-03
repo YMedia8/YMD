@@ -29,16 +29,18 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var mContext: Context
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        mContext = this
+
+        mContext = this // Context 초기화
+        val btn_close = findViewById<ImageView>(R.id.detail_close) // 종료버튼 아이디가져오기
+        val detailImage = findViewById<ImageView>(R.id.detail_image) // 이미지 받아오기 위한 변수
+
 
         //받아올 사진 ID
-        val detailImage = findViewById<ImageView>(R.id.detail_image)
         val imageData = intent.getStringExtra("thumbNailUrl")
-        Log.d("ddd","id = $imageData")
+        Log.d("ddd", "id = $imageData")
 
         Glide.with(mContext)
             .load(imageData)
@@ -50,26 +52,30 @@ class DetailActivity : AppCompatActivity() {
         detailTitle.text = titleData
 
 
+        shareAction() // 공유기능 버튼
 
 
-
-
-        val btn_close = findViewById<ImageView>(R.id.detail_close) // 종료버튼 아이디가져오기
         btn_close.setOnClickListener {     // 종료 누르면 main화면으로 돌아가기
 
             finish()
         }
     }
-    private fun buttonAction(buttontype: String){
-        val like = findViewById<Button>(R.id.detail_like)
-        val share = findViewById<Button>(R.id.detail_share)
 
-//        when(buttontype)
-//        "like" ->{
-//
-//        }
-//        "share"->{
-//
-//        }
+    //공유 기능
+    private fun shareAction() {
+
+        val share = findViewById<Button>(R.id.detail_share)
+        share.setOnClickListener {
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(
+                    Intent.EXTRA_TEXT,
+                    intent.getStringExtra("id")
+                )
+                type = "text/plain"
+            }
+            startActivity(Intent.createChooser(shareIntent, null))
+
+        }
     }
 }
