@@ -34,7 +34,10 @@ interface Interface {
         @Query("regionCode") regionCode: String,
         @Query("key") key : String,
         @Query("q") query: String,
+        @Query("videoCategoryId") videoCategoryId : String?,
         @Query("part") part: String = "snippet",
         @Query("maxResults") maxResults: Int = 30,
+        @Query("type") type : String = "video"
+
     ): Call<Search?>
 }

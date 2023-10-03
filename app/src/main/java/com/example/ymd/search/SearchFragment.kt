@@ -1,6 +1,7 @@
 package com.example.ymd.search
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -37,7 +38,6 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentSearchBinding.inflate(inflater,container,false)
-
         setupView()
         setupListener()
         return binding.root
@@ -55,7 +55,6 @@ class SearchFragment : Fragment() {
     private fun setupListener() {
         val hideKb=requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         binding.searchBtn.setOnClickListener {
-            Log.e("click","click")
             val query = binding.searchText.text.toString()
             if(query.isNotEmpty()){
                 adapter.clearItem()
@@ -65,12 +64,48 @@ class SearchFragment : Fragment() {
             }
             hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
         }
+
+        //음악 카테고리 버튼
+        binding.music.setOnClickListener {
+            val query = binding.searchText.text.toString()
+            if(query.isNotEmpty()){
+                adapter.clearItem()
+                searchResultListener(query,"10")
+            }else {
+                Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
+            }
+            hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
+        }
+
+        //스포츠 카테고리 버튼
+        binding.sports.setOnClickListener {
+            val query = binding.searchText.text.toString()
+            if(query.isNotEmpty()){
+                adapter.clearItem()
+                searchResultListener(query,"17")
+            }else {
+                Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
+            }
+            hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
+        }
+
+        //게임 카테고리 버튼
+        binding.game.setOnClickListener {
+            val query = binding.searchText.text.toString()
+            if(query.isNotEmpty()){
+                adapter.clearItem()
+                searchResultListener(query,"20")
+            }else {
+                Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
+            }
+            hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
+        }
     }
 
 
-    
+    //전체
     private fun searchResultListener(query:String) {
-        api.search("KR",Constants.AUTH_HEADER,query)
+        api.search("KR",Constants.AUTH_HEADER,query,null)
             ?.enqueue(object :Callback<Search?>{
                 override fun onResponse(call: Call<Search?>, response: Response<Search?>) {
                     if(response.isSuccessful){
@@ -78,7 +113,33 @@ class SearchFragment : Fragment() {
                             val thumbnailUrl=it.snippet.thumbnails.default.url
                             val title=it.snippet.title
                             val date=it.snippet.publishedAt.substring(0,10)
-                            searchItems.add(SearchItemModel(title,thumbnailUrl,date))
+                            val video=it.id.videoId
+                            searchItems.add(SearchItemModel(title,thumbnailUrl,date,video))
+                        }
+                    }
+                    adapter.items=searchItems
+                    adapter.notifyDataSetChanged()
+                }
+
+                override fun onFailure(call: Call<Search?>, t: Throwable) {
+                    Log.e("fail","${t.message}")
+                }
+            })
+    }
+
+    //오버로딩, 카테고리별
+    private fun searchResultListener(query:String,categoryId:String) {
+        api.search("KR",Constants.AUTH_HEADER,query,categoryId)
+            ?.enqueue(object :Callback<Search?>{
+                override fun onResponse(call: Call<Search?>, response: Response<Search?>) {
+                    if(response.isSuccessful){
+                        Log.e("test","${response.body()}")
+                        response.body()!!.items.forEach {
+                            val thumbnailUrl=it.snippet.thumbnails.default.url
+                            val title=it.snippet.title
+                            val date=it.snippet.publishedAt.substring(0,10)
+                            val video=it.id.videoId
+                            searchItems.add(SearchItemModel(title,thumbnailUrl,date,video))
                         }
                     }
                     adapter.items=searchItems
