@@ -1,6 +1,5 @@
 # YMD
-===
-<img src="icon1.png" width="100%" />
+<img src="https://user-images.githubusercontent.com/139092987/272430027-ea080f69-530b-4d95-8117-2472670c7942.png" width="20%" />
 
 
 <div align="center">
