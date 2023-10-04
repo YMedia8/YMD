@@ -18,41 +18,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/game"
+    <com.skydoves.powerspinner.PowerSpinnerView
+        android:id="@+id/searchCategory"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/orange"
-        android:text="게임"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/sports"
-        app:layout_constraintTop_toBottomOf="@+id/searchText" />
-
-    <Button
-        android:id="@+id/sports"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/orange"
-        android:text="스포츠"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/music"
-        app:layout_constraintTop_toBottomOf="@+id/searchText" />
-
-    <Button
-        android:id="@+id/music"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="20dp"
-        android:backgroundTint="@color/orange"
-        android:text="음악"
-        android:textSize="13sp"
-        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="카테고리"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="14.5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:spinner_arrow_gravity="end"
+        app:spinner_arrow_padding="8dp"
+        app:spinner_arrow_tint="@color/black"
+        app:spinner_divider_color="@color/black"
+        app:spinner_divider_show="true"
+        app:spinner_divider_size="0.4dp"
+        app:spinner_item_height="46dp"
+        app:spinner_popup_animation="dropdown"
+        app:spinner_popup_background="@color/white"
+        app:spinner_popup_elevation="14dp"
+        app:spinner_popup_height="200dp" />
 
     <EditText
         android:id="@+id/searchText"
