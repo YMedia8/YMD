@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide
 import com.example.ymd.R
 import com.example.ymd.databinding.ActivityDetailBinding
 import com.example.ymd.databinding.FragmentHotBinding
-import com.example.ymd.hot.DetailAdapter
 import com.example.ymd.hot.HotAdapter
 import com.example.ymd.hot.HotItemModel
 import com.example.ymd.retrofit.YMDClient
