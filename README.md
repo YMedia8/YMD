@@ -1,10 +1,11 @@
-# YMD
+# 😢 YMD 
 <img src="https://user-images.githubusercontent.com/139092987/272430027-ea080f69-530b-4d95-8117-2472670c7942.png" width="20%" />
 
 
 <div align="center">
    <h2>Netflix 인터페이스르 오마주한 앱</h2>
-   <p>내일배움캠프 7기 안드로이드 8조 </br>
+   <p>내일배움캠프 7기 안드로이드 8조 
+   </br>
       Youtube을 이용한 Netflix버젼 -  8_8 (그만울조) </p>
    <br>
 </div>
@@ -45,6 +46,13 @@
    </tr>
 </table>
 
+## Figma를 이용한 Wire Frame
+<img src="https://user-images.githubusercontent.com/139092987/272431719-25b4ed05-a308-4499-b31c-cbe07595460f.png" width="100%" />
+
+## 프로젝트 업무 관리
+Github의 Project의 칸반 보드를 통해 Issue를 생성하고,   
+완료 된 Issue는 Pull Request와 연결하여 관리   
+[YMd_PJ](https://github.com/orgs/YMedia8/projects/2)
 
 
 ![is](https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white)
