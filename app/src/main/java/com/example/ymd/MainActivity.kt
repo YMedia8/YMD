@@ -35,9 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         initViewPager()
 
-        binding.mainNotification.setOnClickListener {
-
-        }
 //
 //        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
 //            if(it.resultCode == RESULT_OK){
