@@ -2,7 +2,6 @@ package com.example.ymd.home.homeAdapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ymd.R
 import com.example.ymd.databinding.ItemRecyclerViewListBinding
 import com.example.ymd.datail.DetailActivity
-import com.example.ymd.home.homeItemModel.HomeItemModel
+import com.example.ymd.home.homeItemModel.CategoryVideoItemModel
 
-class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerView.Adapter<HomeAdapter.Holder>(){
+class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoItemModel>) : RecyclerView.Adapter<CategoryVideoAdapter.Holder>() {
 
     interface ItemClick{
         fun onClick(view: View, position: Int)
@@ -24,31 +23,31 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
     private var itemClick: ItemClick? = null
 
     private var isWebViewVisible = true
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.Holder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerViewListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return  Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: HomeAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.setOnClickListener {
             itemClick?.onClick(it, position)
         }
-//        val videoUrl = homeList[position].thumbnail
+//        val videoUrl = categoryList[position].thumbnail
 //        Glide.with(holder.video.context)
 //            .load(videoUrl)
 //            .into(holder.video)
-        val url = homeList[position].getVideoUrl()
+        val url = categoryList[position].getVideoUrl()
         if (url.isNotEmpty()){
             isWebViewVisible = true
         }
-
-        holder.title.text = homeList[position].title
+        holder.title.text = categoryList[position].title
         holder.webView.visibility = if (isWebViewVisible) View.VISIBLE else View.GONE
         holder.webView.loadUrl(url)
     }
 
     override fun getItemCount(): Int {
-        return homeList.size
+        return categoryList.size
     }
 
     inner class Holder(binding: ItemRecyclerViewListBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener{
@@ -72,8 +71,8 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when(view.id){
-                /*R.id.playButton -> {
-                    val currentItem = homeList[position]
+                R.id.playbt -> {
+                    val currentItem = categoryList[position]
                     val url = currentItem.getVideoUrl()
                     if (url.isNotEmpty()){
                         isWebViewVisible = true
@@ -81,26 +80,23 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
 
                         webView.loadUrl(url)
                     }
-                    Log.d("test", "실행 완료")
-                }*/
+                }
                 R.id.information -> {
                     val intent = Intent(context, DetailActivity::class.java)
                     intent.apply {
-                        putExtra("thumbNailUrl", homeList[position].thumbnail)
-                        putExtra("title", homeList[position].title)
-                        putExtra("id",homeList[position].getVideoUrl())
+                        putExtra("thumbNailUrl", categoryList[position].thumbnail)
+                        putExtra("title", categoryList[position].title)
+                        putExtra("id",categoryList[position].getVideoUrl())
 
                     }
-                    Log.d("test", "실행 완료")
                     context.startActivity(intent)
                 }
             }
         }
     }
 
-    fun updateData(newData: List<HomeItemModel>) {
-        homeList = newData.toMutableList()
+    fun updateData(newData: List<CategoryVideoItemModel>){
+        categoryList = newData.toMutableList()
         notifyDataSetChanged()
     }
-
 }

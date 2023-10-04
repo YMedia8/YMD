@@ -15,6 +15,7 @@ import com.example.ymd.databinding.FragmentSearchBinding
 import com.example.ymd.retrofit.Constants
 import com.example.ymd.retrofit.search.Search
 import com.example.ymd.retrofit.YMDClient.api
+import com.example.ymd.retrofit.categories.Categories
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,8 @@ class SearchFragment : Fragment() {
     private lateinit var gridmanager : StaggeredGridLayoutManager
 
     private var searchItems = ArrayList<SearchItemModel>()
+    private var spinnerMap= ArrayList<HashMap<String,String>>()
+    private var categoryName = ArrayList<String>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,6 +41,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentSearchBinding.inflate(inflater,container,false)
+        categoryView()
         setupView()
         setupListener()
         return binding.root
@@ -65,36 +69,22 @@ class SearchFragment : Fragment() {
             hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
         }
 
-        //음악 카테고리 버튼
-        binding.music.setOnClickListener {
-            val query = binding.searchText.text.toString()
-            if(query.isNotEmpty()){
-                adapter.clearItem()
-                searchResultListener(query,"10")
-            }else {
-                Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
+        // 카테고리 버튼
+        binding.searchCategory.setOnSpinnerItemSelectedListener<String> { _, _, _, text ->
+            var categoryId=""
+            for(i in spinnerMap){
+               if(i.containsKey(text)){
+                   categoryId=i.get(text)!!
+                   Log.e("test","${categoryId}")
+                   break
+               }
             }
-            hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
-        }
 
-        //스포츠 카테고리 버튼
-        binding.sports.setOnClickListener {
+            val hideKb=requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             val query = binding.searchText.text.toString()
             if(query.isNotEmpty()){
                 adapter.clearItem()
-                searchResultListener(query,"17")
-            }else {
-                Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
-            }
-            hideKb.hideSoftInputFromWindow(binding.searchText.windowToken,0)
-        }
-
-        //게임 카테고리 버튼
-        binding.game.setOnClickListener {
-            val query = binding.searchText.text.toString()
-            if(query.isNotEmpty()){
-                adapter.clearItem()
-                searchResultListener(query,"20")
+                searchResultListener(query,categoryId)
             }else {
                 Toast.makeText(sContext,"검색어를 입력하세요.",Toast.LENGTH_SHORT).show()
             }
@@ -102,6 +92,29 @@ class SearchFragment : Fragment() {
         }
     }
 
+
+    private fun categoryView() {
+        api.category(Constants.AUTH_HEADER,"snippet","KR")
+            ?.enqueue(object : Callback<Categories?>{
+                override fun onResponse(call: Call<Categories?>, response: Response<Categories?>) {
+                    if(response.isSuccessful){
+                        response.body()!!.items.forEach {
+                            val title=it.snippet.title
+                            val categoryId=it.id
+                            var map=HashMap<String,String>()
+                            map.put(title,categoryId)
+                            spinnerMap.add(map)
+                            categoryName.add(title)
+                        }
+                    }
+                    binding.searchCategory.setItems(categoryName)
+                }
+
+                override fun onFailure(call: Call<Categories?>, t: Throwable) {
+                    Log.e("fail","${t.message}")
+                }
+            })
+    }
 
     //전체
     private fun searchResultListener(query:String) {
