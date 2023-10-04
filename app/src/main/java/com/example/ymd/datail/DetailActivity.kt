@@ -1,5 +1,6 @@
 package com.example.ymd.datail
 
+import DetailAdapter
 import android.content.Context
 import android.content.Intent
 import android.media.Image
@@ -15,7 +16,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.SnapHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.util.Util
 import com.example.ymd.R
+import com.example.ymd.Utils
 import com.example.ymd.databinding.ActivityDetailBinding
 import com.example.ymd.databinding.FragmentHotBinding
 import com.example.ymd.hot.HotAdapter
@@ -38,7 +41,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var gridManager: StaggeredGridLayoutManager
     private lateinit var adapter: DetailAdapter
     private var resItems: ArrayList<DetailModel> = ArrayList()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -67,8 +69,10 @@ class DetailActivity : AppCompatActivity() {
             if(!likeVideo){
                 Snackbar.make(binding.constraintLayout2,"Mypage에 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
                 likeVideo = true
+                Utils.addPrefItem(this, HotItemModel("", titleData, imageData,"",true ))
             }
             else likeVideo = false
+            Utils
         }
 
 

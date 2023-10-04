@@ -1,5 +1,6 @@
 package com.example.ymd
 
+import DetailAdapter
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -23,7 +24,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainActivity : AppCompatActivity() {
 
     private lateinit var MainContext :Context
-    private lateinit var adapter : HotAdapter
+    private lateinit var adapter : DetailAdapter
     lateinit var binding: ActivityMainBinding
     lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
 
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 adapter.notifyDataSetChanged()
             }
+            val intent = Intent(this, DetailActivity::class.java)
             activityResultLauncher.launch(intent)
-            Log.d("mainActivity", "sj intent")
         }
     }
 
