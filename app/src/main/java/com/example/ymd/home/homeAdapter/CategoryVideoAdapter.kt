@@ -7,12 +7,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.ymd.R
 import com.example.ymd.databinding.ItemRecyclerViewListBinding
-import com.example.ymd.home.homeItemModel.HomeItemModel
+import com.example.ymd.home.homeItemModel.CategoryVideoItemModel
 
-class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerView.Adapter<HomeAdapter.Holder>(){
+class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoItemModel>) : RecyclerView.Adapter<CategoryVideoAdapter.Holder>() {
 
     interface ItemClick{
         fun onClick(view: View, position: Int)
@@ -21,31 +20,31 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
     private var itemClick: ItemClick? = null
 
     private var isWebViewVisible = true
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.Holder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemRecyclerViewListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return  Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: HomeAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.itemView.setOnClickListener {
             itemClick?.onClick(it, position)
         }
-//        val videoUrl = homeList[position].thumbnail
+//        val videoUrl = categoryList[position].thumbnail
 //        Glide.with(holder.video.context)
 //            .load(videoUrl)
 //            .into(holder.video)
-        val url = homeList[position].getVideoUrl()
+        val url = categoryList[position].getVideoUrl()
         if (url.isNotEmpty()){
             isWebViewVisible = true
         }
-
-        holder.title.text = homeList[position].title
+        holder.title.text = categoryList[position].title
         holder.webView.visibility = if (isWebViewVisible) View.VISIBLE else View.GONE
         holder.webView.loadUrl(url)
     }
 
     override fun getItemCount(): Int {
-        return homeList.size
+        return categoryList.size
     }
 
     inner class Holder(binding: ItemRecyclerViewListBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener{
@@ -67,7 +66,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
 
             when(view.id){
                 R.id.playbt -> {
-                    val currentItem = homeList[position]
+                    val currentItem = categoryList[position]
                     val url = currentItem.getVideoUrl()
                     if (url.isNotEmpty()){
                         isWebViewVisible = true
@@ -80,9 +79,8 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
         }
     }
 
-    fun updateData(newData: List<HomeItemModel>) {
-        homeList = newData.toMutableList()
+    fun updateData(newData: List<CategoryVideoItemModel>){
+        categoryList = newData.toMutableList()
         notifyDataSetChanged()
     }
-
 }
