@@ -4,9 +4,9 @@
 
 <div align="center">
    <h2>Netflix 인터페이스르 오마주한 앱</h2>
-   <p>내일배움캠프 7기 안드로이드 8조 
+   <p>Youtube Media 8 
    </br>
-      Youtube을 이용한 Netflix버젼 -  8_8 (그만울조) </p>
+      Youtube를 이용한 YMD버젼 -  8_8 (그만울조) </p>
    <br>
 </div>
 
@@ -49,11 +49,51 @@
 ## Figma를 이용한 Wire Frame
 <img src="https://user-images.githubusercontent.com/139092987/272431719-25b4ed05-a308-4499-b31c-cbe07595460f.png" width="100%" />
 
+## 페이지별 기능 설명
+<details>
+    <summary>home</summary>
+    <div markdown="1"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 그그그 뭐더라
+    </div>
+</details>
+<details>
+    <summary>hotTopic</summary>
+    <div markdown="1"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ Youtube api 중 VideoData를 사용<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ data값중 descriptor(설명), title(제목), thumbnail(사진), id(url) 로 사용<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ webview를 사용하여 동영상 재생기능 추가<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 받아온 thumbnail 값 대신 webview에 id값을 넣어 적용<br/>
+    </div>
+</details>
+<details>
+    <summary>myVideo</summary>
+    <div markdown="1"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 그그그 뭐더라
+    </div>
+</details>
+<details>
+    <summary>search</summary>
+        <div markdown="1"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ Search Api를 사용.<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 검색 창에 검색하여 사용자가 원하는 데이터를 보여줌<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 화면 이동시 fade in, fade out 애니메이션<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 비디오 클릭 시 디테일 프레그먼트로 리사이클러뷰 아이템 데이터들 전송<br/>
+        </div>
+</details>
+<details>
+    <summary>detail</summary>
+        <div markdown="1"> 
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 각 비디오 아이템 선택시 Detail로 이동하여 선택된 비디오의 상세 정보를 제공<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 좋아요" 버튼 추가: 비디오 상세 정보 아래에 즐겨찾기 추가. 사용자가 버튼을 클릭하면 해당 비디오 정보가 Mypage에 저장<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ My Video 저장: “즐겨찾기"를 누른 비디오 정보는 My Page에서 조회 가능하며 내부에서 "즐겨찾기"를 누른 비디오 목록을 가져와 출력<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ Detail Activity에서 공유 기능 추가 / 해당 버튼 클릭시, Android의 공유 인텐트를 사용하여 다른 앱으로 비디오의 링크를 전송<br/>
+        </div>
+</details>
+
 ## 프로젝트 업무 관리
 Github의 Project의 칸반 보드를 통해 Issue를 생성하고,   
 완료 된 Issue는 Pull Request와 연결하여 관리   
 [YMd_PJ](https://github.com/orgs/YMedia8/projects/2)
-
 
 ![is](https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white)
 ![is](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
