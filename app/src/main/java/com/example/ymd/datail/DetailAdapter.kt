@@ -1,4 +1,4 @@
-//package com.example.ymd.hot
+package com.example.ymd.hot
 //
 //import android.content.Context
 //import android.content.Intent
