@@ -12,4 +12,12 @@
     <style name="TabName" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">#FFFFFF</item>
     </style>
+
+    // 탭레이아웃 텍스트
+    <style name="tabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/oagothic</item>
+    </style>
+
 </resources>

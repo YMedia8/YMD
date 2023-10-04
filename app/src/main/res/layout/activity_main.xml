@@ -27,6 +27,7 @@
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="bold"
+            android:fontFamily="@font/oagothic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,6 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:theme="@style/TabName"
+        app:tabTextAppearance="@style/tabText"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabItem
