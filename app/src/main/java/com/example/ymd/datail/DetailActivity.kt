@@ -1,5 +1,6 @@
 package com.example.ymd.datail
 
+import DetailAdapter
 import android.content.Context
 import android.content.Intent
 import android.media.Image
@@ -22,7 +23,9 @@ import com.example.ymd.databinding.ActivityDetailBinding
 import com.example.ymd.databinding.FragmentHotBinding
 import com.example.ymd.hot.HotAdapter
 import com.example.ymd.hot.HotItemModel
+import com.example.ymd.retrofit.Constants
 import com.example.ymd.retrofit.YMDClient
+import com.example.ymd.retrofit.YMDClient.api
 import com.example.ymd.retrofit.youtubeData.VideoData
 import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
@@ -81,8 +84,8 @@ class DetailActivity : AppCompatActivity() {
         shareAction() // 공유기능 버튼
 
 
-//        setupViews()
-//        fetchImageResults()
+        setupViews()
+        fetchImageResults()
 
 
         btn_close.setOnClickListener {     // 종료 누르면 main화면으로 돌아가기
@@ -120,12 +123,12 @@ class DetailActivity : AppCompatActivity() {
     }
     //api 연결
     private fun fetchImageResults() {
-        YMDClient.api.video(
+        api.video(
             part = "snippet",
             chart = "mostPopular",
             maxResults = 20,
             regionCode = "KR",
-            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
+            Constants.AUTH_HEADER
         ).enqueue(object : Callback<VideoData?> {
             override fun onResponse(
                 call: Call<VideoData?>,
@@ -133,12 +136,10 @@ class DetailActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     response.body()?.items?.forEach {
-                        val descriptor = it.snippet.description
                         val title = it.snippet.title
-                        val thumbnail = it.snippet.thumbnails.high.url
                         val id = it.id
 
-                        resItems.add(DetailModel(descriptor, title, thumbnail, id))
+                        resItems.add(DetailModel( title, id))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")
@@ -152,5 +153,14 @@ class DetailActivity : AppCompatActivity() {
             }
         })
     }
+//    private fun chanelIDResults() {
+//        YMDClient.api.channels(
+//            part = "snippet",
+//            chart = "mostPopular",
+//            maxResults = 20,
+//            regionCode = "KR",
+//            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
+//        )
+//    }
 
 }
