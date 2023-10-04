@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var MainContext :Context
     lateinit var binding: ActivityMainBinding
-    lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
+//    lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
 
     var likeVideo = mutableListOf<HotItemModel>()
 
@@ -38,25 +38,25 @@ class MainActivity : AppCompatActivity() {
         binding.mainNotification.setOnClickListener {
 
         }
-
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode == RESULT_OK){
-                val itemIndex = it.data?.getIntExtra("itemIndex", 0) as Int
-                val like = it.data?.getBooleanExtra("isLike", false) as Boolean
-
-                if(like){
-                    likeVideo[itemIndex].favorites = true
-                    Log.d("mainActivity", "sj like")
-                }
-                else {
-                    if(likeVideo[itemIndex].favorites){
-                        likeVideo[itemIndex].favorites = false
-                    }
-                }
-            }
-            val intent = Intent(this, DetailActivity::class.java)
-            activityResultLauncher.launch(intent)
-        }
+//
+//        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//            if(it.resultCode == RESULT_OK){
+//                val itemIndex = it.data?.getIntExtra("itemIndex", 0) as Int
+//                val like = it.data?.getBooleanExtra("isLike", false) as Boolean
+//
+//                if(like){
+//                    likeVideo[itemIndex].favorites = true
+//                    Log.d("mainActivity", "sj like")
+//                }
+//                else {
+//                    if(likeVideo[itemIndex].favorites){
+//                        likeVideo[itemIndex].favorites = false
+//                    }
+//                }
+//            }
+//            val intent = Intent(this, DetailActivity::class.java)
+//            activityResultLauncher.launch(intent)
+//        }
     }
 
     private fun initViewPager() {
