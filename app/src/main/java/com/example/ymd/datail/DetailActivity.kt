@@ -2,6 +2,7 @@ package com.example.ymd.datail
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -71,11 +72,17 @@ class DetailActivity : AppCompatActivity() {
         // 좋아요 클릭시 Mypage 보관함에 저장
         binding.detailLike.setOnClickListener{
             if(!likeVideo){
+                binding.detailLike.setText("UNLIKE")
+                binding.linearLike.setBackgroundColor(Color.parseColor("#F06292"))
                 Snackbar.make(binding.constraintLayout2,"Mypage에 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
                 likeVideo = true
                 Utils.addPrefItem(this, HotItemModel("", title, img,"",true ))
             }
-            else likeVideo = false
+            else {
+                binding.detailLike.setText("LIKE")
+                binding.linearLike.setBackgroundColor(Color.parseColor("#9575CD"))
+                likeVideo = false
+            }
 
         }
 
