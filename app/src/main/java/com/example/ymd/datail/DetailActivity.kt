@@ -1,6 +1,5 @@
 package com.example.ymd.datail
 
-import DetailAdapter
 import android.content.Context
 import android.content.Intent
 import android.media.Image
