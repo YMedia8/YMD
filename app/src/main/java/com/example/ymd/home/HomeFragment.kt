@@ -136,7 +136,7 @@ class HomeFragment : Fragment() {
                         val descriptor = it.snippet.description
                         val id = it.id
 
-                        items.add(HomeItemModel(thumbnail,title, descriptor, id))
+                        items.add(HomeItemModel(thumbnail,title, descriptor, id, false))
                     }
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")
