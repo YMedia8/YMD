@@ -1,5 +1,7 @@
 package com.example.ymd.home.homeAdapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ymd.R
 import com.example.ymd.databinding.ItemRecyclerViewListBinding
+import com.example.ymd.datail.DetailActivity
 import com.example.ymd.home.homeItemModel.CategoryVideoItemModel
 
 class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoItemModel>) : RecyclerView.Adapter<CategoryVideoAdapter.Holder>() {
@@ -51,9 +54,12 @@ class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoIt
         val title = binding.title
         var webView: WebView = binding.imageView
         var playbt: ImageView = binding.playButton
+        val information = binding.information
+        val context: Context = itemView.context
 
         init {
             title.setOnClickListener(this)
+            information.setOnClickListener(this)
 
             webView.settings.javaScriptEnabled = true
             webView.settings.loadsImagesAutomatically = true
@@ -74,6 +80,16 @@ class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoIt
 
                         webView.loadUrl(url)
                     }
+                }
+                R.id.information -> {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.apply {
+                        putExtra("thumbNailUrl", categoryList[position].thumbnail)
+                        putExtra("title", categoryList[position].title)
+                        putExtra("id",categoryList[position].getVideoUrl())
+
+                    }
+                    context.startActivity(intent)
                 }
             }
         }

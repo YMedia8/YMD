@@ -1,5 +1,7 @@
 package com.example.ymd.home.homeAdapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +9,9 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.ymd.R
 import com.example.ymd.databinding.ItemRecyclerViewListBinding
+import com.example.ymd.datail.DetailActivity
 import com.example.ymd.home.homeItemModel.HomeItemModel
 
 class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerView.Adapter<HomeAdapter.Holder>(){
@@ -52,9 +54,12 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
         val title = binding.title
         var webView: WebView = binding.imageView
         var playbt: ImageView = binding.playButton
+        val information = binding.information
+        val context: Context = itemView.context
 
         init {
             title.setOnClickListener(this)
+            information.setOnClickListener(this)
 
             webView.settings.javaScriptEnabled = true
             webView.settings.loadsImagesAutomatically = true
@@ -66,7 +71,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when(view.id){
-                R.id.playbt -> {
+                R.id.playButton -> {
                     val currentItem = homeList[position]
                     val url = currentItem.getVideoUrl()
                     if (url.isNotEmpty()){
@@ -75,6 +80,16 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
 
                         webView.loadUrl(url)
                     }
+                }
+                R.id.information -> {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.apply {
+                        putExtra("thumbNailUrl", homeList[position].thumbnail)
+                        putExtra("title", homeList[position].title)
+                        putExtra("id",homeList[position].getVideoUrl())
+
+                    }
+                    context.startActivity(intent)
                 }
             }
         }

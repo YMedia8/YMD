@@ -47,6 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/addImage" />
 
     <ImageView
+        android:id="@+id/information"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="190dp"
