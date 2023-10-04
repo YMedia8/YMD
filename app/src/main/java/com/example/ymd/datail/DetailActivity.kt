@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.SnapHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ymd.R
@@ -22,6 +23,7 @@ import com.example.ymd.hot.HotAdapter
 import com.example.ymd.hot.HotItemModel
 import com.example.ymd.retrofit.YMDClient
 import com.example.ymd.retrofit.youtubeData.VideoData
+import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,14 +33,17 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var mContext: Context
     private lateinit var binding: ActivityDetailBinding
+
+    private var likeVideo = false
+
     private lateinit var gridManager: StaggeredGridLayoutManager
     private lateinit var adapter: DetailAdapter
     private var resItems: ArrayList<DetailModel> = ArrayList()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mContext = this // Context 초기화
         val btn_close = findViewById<ImageView>(R.id.detail_close) // 종료버튼 아이디가져오기
@@ -57,6 +62,15 @@ class DetailActivity : AppCompatActivity() {
         val detailTitle = findViewById<TextView>(R.id.detail_title)
         val titleData = intent.getStringExtra("title")
         detailTitle.text = titleData
+
+        // 좋아요 클릭시 Mypage 보관함에 저장
+        binding.detailLike.setOnClickListener{
+            if(!likeVideo){
+                Snackbar.make(binding.constraintLayout2,"Mypage에 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
+                likeVideo = true
+            }
+            else likeVideo = false
+        }
 
 
         shareAction() // 공유기능 버튼
