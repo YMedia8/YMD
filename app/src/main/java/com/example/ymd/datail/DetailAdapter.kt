@@ -1,5 +1,6 @@
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,17 +32,16 @@ class DetailAdapter(private val mContext: Context) :
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+
         val currentItem = items[position]
         val url = currentItem.getVideoUrl()
         if (url.isNotEmpty()) {
             isWebViewVisible = true
         }
 
-        Glide.with(mContext)
-            .load(currentItem.channelId)
-            .into(holder.channelId)
 
         holder.webView.loadUrl(url)
+        Log.d("dddd","www $url")
         holder.webView.visibility = if (isWebViewVisible) View.VISIBLE else View.GONE
         holder.title.text = currentItem.title
     }
@@ -72,24 +72,23 @@ class DetailAdapter(private val mContext: Context) :
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when (view.id) {
-                R.id.plusbt -> {
-                    val intent = Intent(mContext, MypageFragment::class.java)
-                    mContext.startActivity(intent)
-                }
-                R.id.playbt -> {
-                    val currentItem = items[position]
-                    val url = currentItem.getVideoUrl() // YouTube 비디오 URL을 가져옴
-                    if (url.isNotEmpty()) {
-                        isWebViewVisible = true
-                        notifyItemChanged(position)
-
-                        webView.loadUrl(url)
-                    }
-                }
+//                R.id.plusbt -> {
+//                    val intent = Intent(mContext, MypageFragment::class.java)
+//                    mContext.startActivity(intent)
+//                }
+//                R.id.playbt -> {
+//                    val currentItem = items[position]
+//                    val url = currentItem.getVideoUrl() // YouTube 비디오 URL을 가져옴
+//                    if (url.isNotEmpty()) {
+//                        isWebViewVisible = true
+//                        notifyItemChanged(position)
+//
+//                        webView.loadUrl(url)
+//                    }
+//                }
                 R.id.inforbt -> {
                     val intent = Intent(mContext, DetailActivity::class.java)
                     intent.apply {
-                        putExtra("thumbNailUrl", items[position].thumbnail)
                         putExtra("title", items[position].title)
                         putExtra("id",items[position].getVideoUrl())
 
