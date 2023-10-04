@@ -4,7 +4,7 @@ data class HotItemModel(
     val title: String,
     val thumbnail: String,
     val id: String,
-    val favorites: Boolean = false
+    var favorites: Boolean = false
 ) {
     fun getVideoUrl(): String {
         return "https://www.youtube.com/embed/$id"

@@ -7,6 +7,7 @@ import com.example.ymd.hot.HotFragment
 import com.example.ymd.home.HomeFragment
 import com.example.ymd.mypage.MypageFragment
 import com.example.ymd.databinding.ActivityMainBinding
+import com.example.ymd.hot.HotItemModel
 import com.example.ymd.search.SearchFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
+    var likeVideo : ArrayList<HotItemModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,5 +54,13 @@ class MainActivity : AppCompatActivity() {
                 3 -> tab.setIcon(R.drawable.search).text = "Search"
             }
         }.attach()
+    }
+    fun addLikedVideo(items:HotItemModel){
+        if(!likeVideo.contains(items)){
+            likeVideo.add(items)
+        }
+    }
+    fun removeLikedVideo(items: HotItemModel){
+        likeVideo.remove(items)
     }
 }
