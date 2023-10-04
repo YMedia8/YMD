@@ -1,11 +1,11 @@
-package com.example.ymd.home.homeItemModel
+package com.example.ymd.datail
 
-data class HomeItemModel(
+data class DetailModel (
     val thumbnail: String,
     val title: String,
-    val descriptor: String,
-    val id: String
-){
+    val id : String,
+    val channelId : String
+    ){
     fun getVideoUrl(): String {
         return "https://www.youtube.com/embed/$id"
     }
