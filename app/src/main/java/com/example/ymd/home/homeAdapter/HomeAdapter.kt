@@ -2,6 +2,7 @@ package com.example.ymd.home.homeAdapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,7 +72,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when(view.id){
-                R.id.playButton -> {
+                /*R.id.playButton -> {
                     val currentItem = homeList[position]
                     val url = currentItem.getVideoUrl()
                     if (url.isNotEmpty()){
@@ -80,7 +81,8 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
 
                         webView.loadUrl(url)
                     }
-                }
+                    Log.d("test", "실행 완료")
+                }*/
                 R.id.information -> {
                     val intent = Intent(context, DetailActivity::class.java)
                     intent.apply {
@@ -89,6 +91,7 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
                         putExtra("id",homeList[position].getVideoUrl())
 
                     }
+                    Log.d("test", "실행 완료")
                     context.startActivity(intent)
                 }
             }
