@@ -20,7 +20,7 @@
 
     <com.skydoves.powerspinner.PowerSpinnerView
         android:id="@+id/searchCategory"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:background="@color/white"
@@ -29,7 +29,7 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
-        android:textSize="14.5sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"

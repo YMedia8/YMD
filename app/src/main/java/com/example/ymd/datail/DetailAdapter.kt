@@ -1,3 +1,5 @@
+package com.example.ymd.datail
+
 import android.content.Context
 import android.content.Intent
 import android.util.Log

@@ -1,6 +1,5 @@
 package com.example.ymd.datail
 
-import DetailAdapter
 import android.content.Context
 import android.content.Intent
 import android.media.Image
@@ -16,7 +15,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.SnapHelper
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.util.Util
 import com.example.ymd.R
+import com.example.ymd.Utils
 import com.example.ymd.databinding.ActivityDetailBinding
 import com.example.ymd.databinding.FragmentHotBinding
 import com.example.ymd.hot.HotAdapter
@@ -42,6 +43,8 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var adapter: DetailAdapter
     private var resItems: ArrayList<DetailModel> = ArrayList()
 
+    private lateinit var img:String
+    private lateinit var title:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -53,25 +56,27 @@ class DetailActivity : AppCompatActivity() {
 
 
         //받아올 사진 ID
-        val imageData = intent.getStringExtra("thumbNailUrl")
-        Log.d("ddd", "id = $imageData")
+        img = intent.getStringExtra("thumbNailUrl")!!
+        Log.d("ddd", "id = $img")
 
         Glide.with(mContext)
-            .load(imageData)
+            .load(img)
             .into(detailImage)
 
         // 받아올 타이틀 ID
         val detailTitle = findViewById<TextView>(R.id.detail_title)
-        val titleData = intent.getStringExtra("title")
-        detailTitle.text = titleData
+        title = intent.getStringExtra("title")!!
+        detailTitle.text = title
 
         // 좋아요 클릭시 Mypage 보관함에 저장
         binding.detailLike.setOnClickListener{
             if(!likeVideo){
                 Snackbar.make(binding.constraintLayout2,"Mypage에 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
                 likeVideo = true
+                Utils.addPrefItem(this, HotItemModel("", title, img,"",true ))
             }
             else likeVideo = false
+
         }
 
 
