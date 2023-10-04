@@ -1,5 +1,5 @@
 # 😢 YMD 
-<img src="https://user-images.githubusercontent.com/139092987/272430027-ea080f69-530b-4d95-8117-2472670c7942.png" width="20%" />
+<img src="https://user-images.githubusercontent.com/139092987/272443524-cbf7b049-05fc-4941-9ea4-e7339ff92274.png" width="50%" />
 
 
 <div align="center">
