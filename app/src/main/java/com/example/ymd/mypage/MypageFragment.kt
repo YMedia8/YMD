@@ -2,6 +2,7 @@ package com.example.ymd.mypage
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.ymd.MainActivity
 import com.example.ymd.R
+import com.example.ymd.Utils
 import com.example.ymd.databinding.FragmentMypageBinding
 import com.example.ymd.hot.HotItemModel
 
@@ -41,8 +43,9 @@ class MypageFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val mainActivity = activity as MainActivity
-        likedVideo = mainActivity.likeVideo
+//        val mainActivity = activity as MainActivity
+//        likedVideo = mainActivity.likeVideo
+        likedVideo=Utils.getPrefBookmarkItems(mypageContext)
         adapter.video = likedVideo.toMutableList()
         adapter.notifyDataSetChanged()
 
