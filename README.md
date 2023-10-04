@@ -87,6 +87,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 좋아요" 버튼 추가: 비디오 상세 정보 아래에 즐겨찾기 추가. 사용자가 버튼을 클릭하면 해당 비디오 정보가 Mypage에 저장<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ My Video 저장: “즐겨찾기"를 누른 비디오 정보는 My Page에서 조회 가능하며 내부에서 "즐겨찾기"를 누른 비디오 목록을 가져와 출력<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ Detail Activity에서 공유 기능 추가 / 해당 버튼 클릭시, Android의 공유 인텐트를 사용하여 다른 앱으로 비디오의 링크를 전송<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ Recycleview를 이용해 연관 동영상 보여주기<br/>
         </div>
 </details>
 
