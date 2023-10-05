@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/detail_it"
-    android:background="@color/white">
+    android:id="@+id/detail_it">
 
 
     <WebView
@@ -22,37 +21,11 @@
         android:id="@+id/detail_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:textSize="18dp"
         android:layout_margin="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/detail_item_profile"
+        android:text="Title"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_it_wb" />
 
-    <ImageView
-        android:id="@+id/detail_item_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_it_wb"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/detail_item_info"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_item_title"
-        app:srcCompat="@drawable/ic_information" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#D4D4D4"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/detail_item_info"
-        tools:layout_editor_absoluteX="0dp">
-
-    </View>
 </androidx.constraintlayout.widget.ConstraintLayout>

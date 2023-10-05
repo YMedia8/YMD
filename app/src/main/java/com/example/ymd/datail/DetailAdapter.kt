@@ -54,14 +54,11 @@ class DetailAdapter(private val mContext: Context) :
         View.OnClickListener {
 
         var webView: WebView = binding.detailItWb //동영상재생
-        var channelId: ImageView = binding.detailItemProfile //채널 id
-        var inforbt: ImageView = binding.detailItemInfo //detail정보
         var title: TextView = binding.detailItemTitle // 타이틀 제목
         var thumb_item: ConstraintLayout = binding.detailIt // 아이템
 
         init {
             thumb_item.setOnClickListener(this)
-            inforbt.setOnClickListener(this)
 
             webView.settings.javaScriptEnabled = true // JavaScript 활성화 (영상 재생을 위해 필요)
             webView.settings.loadsImagesAutomatically = true // 이미지 자동로드 활성화
