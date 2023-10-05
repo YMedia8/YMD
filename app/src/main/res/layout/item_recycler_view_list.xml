@@ -22,38 +22,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:text="제목"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="@font/oagothic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
-        android:id="@+id/addImage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <ImageView
-        android:id="@+id/playButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/ic_start"
-        app:layout_constraintStart_toEndOf="@+id/addImage"
-        app:layout_constraintTop_toTopOf="@+id/addImage" />
-
-    <ImageView
         android:id="@+id/information"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_information"
-        app:layout_constraintStart_toEndOf="@+id/playButton"
-        app:layout_constraintTop_toTopOf="@+id/addImage" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
