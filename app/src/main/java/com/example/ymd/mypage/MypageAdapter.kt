@@ -40,7 +40,6 @@ class MypageAdapter(private val MypageAdapterContext : Context) : RecyclerView.A
     inner class videoViewHolder(binding: MyItemBinding) : RecyclerView.ViewHolder(binding.root){
         var mypageVideo : ImageView = binding.myImage
         var mypageTitel : TextView = binding.myTitle
-        var mypagePlay : ImageView = binding.playbt
         var xBtn=binding.myPageClose
         var mypageView=binding.root
 
