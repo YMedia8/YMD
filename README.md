@@ -10,13 +10,6 @@
    <br>
 </div>
 
-## 영상
-
-
-https://github.com/YMedia8/YMD/assets/81506621/011a9143-2897-479f-a493-6ac87bac77ef
-
-
-
 
 ## 🔳 팀 소개 및 개요
 ◼ 팀 소개 - 무난무난한 5명이 모인 팀
@@ -117,3 +110,7 @@ Github의 Project의 칸반 보드를 통해 Issue를 생성하고,
 ![is](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white)
 ![is](https://img.shields.io/badge/Netflix-E50914?style=for-the-badge&logo=netflix&logoColor=white)
 ![is](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
+
+
+## 영상
+https://github.com/YMedia8/YMD/assets/81506621/011a9143-2897-479f-a493-6ac87bac77ef
