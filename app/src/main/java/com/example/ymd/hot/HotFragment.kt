@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.ymd.databinding.FragmentHotBinding
+import com.example.ymd.retrofit.Constants
 import com.example.ymd.retrofit.YMDClient.api
 import com.example.ymd.retrofit.youtubeData.VideoData
 import retrofit2.Call
@@ -57,7 +58,7 @@ class HotFragment : Fragment() {
             chart = "mostPopular",
             maxResults = 20,
             regionCode = "KR",
-            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
+            apiKey = Constants.AUTH_HEADER
         ).enqueue(object : Callback<VideoData?> {
             override fun onResponse(
                 call: Call<VideoData?>,

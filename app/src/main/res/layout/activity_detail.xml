@@ -76,37 +76,59 @@
         app:layout_constraintTop_toBottomOf="@+id/detail_title"
         tools:layout_editor_absoluteX="0dp">
 
-        <Button
-            android:id="@+id/detail_like"
+        <LinearLayout
+            android:id="@+id/linear_like"
             android:layout_width="180dp"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@color/primary_green"
-            android:drawableLeft="@drawable/like_size"
-            android:drawableTint="@color/white"
+            android:layout_marginStart="10dp"
             android:gravity="center"
-            android:text="Like"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:background="#9575CD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/detail_share"
+            <Button
+                android:id="@+id/detail_like"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="#00ff0000"
+                android:drawableLeft="@drawable/like_size"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:text="Like"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="180dp"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@color/primary_green"
-            android:drawableLeft="@drawable/share_size"
-            android:drawableTint="@color/white"
             android:gravity="center"
-            android:text="Share"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:background="#9575CD"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/detail_share"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:background="#00ff0000"
+                android:drawableLeft="@drawable/share_size"
+                android:drawableTint="@color/white"
+                android:gravity="center"
+                android:text="Share"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

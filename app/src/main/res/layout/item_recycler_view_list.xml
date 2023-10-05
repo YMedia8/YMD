@@ -24,6 +24,7 @@
         android:layout_marginStart="5dp"
         android:text="제목"
         android:textSize="24sp"
+        android:fontFamily="@font/oagothic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

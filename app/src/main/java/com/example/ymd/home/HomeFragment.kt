@@ -21,6 +21,7 @@ import com.example.ymd.home.homeViewModel.CategoryChannelViewModel
 import com.example.ymd.home.homeViewModel.CategoryVideoViewModel
 import com.example.ymd.home.homeViewModel.CategoryViewModel
 import com.example.ymd.home.homeViewModel.HomeViewModel
+import com.example.ymd.retrofit.Constants
 import com.example.ymd.retrofit.YMDClient.api
 import com.example.ymd.retrofit.categories.Categories
 import com.example.ymd.retrofit.channel.Channel
@@ -123,7 +124,7 @@ class HomeFragment : Fragment() {
             chart = "mostPopular",
             maxResults = 20,
             regionCode = "KR",
-            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
+            apiKey = Constants.AUTH_HEADER
         ).enqueue(object : Callback<VideoData?>{
             override fun onResponse(
                 call: Call<VideoData?>,
@@ -153,7 +154,7 @@ class HomeFragment : Fragment() {
     private fun categoryData(){
         api.category(
             part = "snippet",
-            key = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU",
+            key = Constants.AUTH_HEADER,
             regionCode = "KR"
         ).enqueue(object : Callback<Categories?>{
             override fun onResponse(call: Call<Categories?>, response: Response<Categories?>) {
@@ -189,7 +190,7 @@ class HomeFragment : Fragment() {
             chart = "mostPopular",
             maxResults = 20,
             regionCode = "KR",
-            apiKey = "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU",
+            apiKey = Constants.AUTH_HEADER,
             category
         ).enqueue(object : Callback<VideoData?>{
             override fun onResponse(call: Call<VideoData?>, response: Response<VideoData?>) {
@@ -222,7 +223,7 @@ class HomeFragment : Fragment() {
         api.channels(
             "snippet",
             channelList,
-            "AIzaSyBaTftuay-7bov4muIG4oeVRtrHJ4E15FU"
+            Constants.AUTH_HEADER
         ).enqueue(object : Callback<Channel?>{
             override fun onResponse(call: Call<Channel?>, response: Response<Channel?>) {
                 if(response.isSuccessful){
