@@ -103,6 +103,7 @@ class HomeFragment : Fragment() {
             categoryChannelViewModel.clearCategoryChannel()
             categoryVideoItems.clear()
             categoryChannelItems.clear()
+            channelList.clear()
 
             categoryId[text]?.let { categoryVideo(it) }
         }
@@ -174,7 +175,7 @@ class HomeFragment : Fragment() {
                     Log.e("api2", "Error: ${response.errorBody()}")
                 }
                 categoryViewModel.category(categoryItems)
-                Log.d("categoryData", "${categoryItems.size}")
+                Log.d("category", "$categoryId")
             }
 
             override fun onFailure(call: Call<Categories?>, t: Throwable) {
@@ -236,6 +237,7 @@ class HomeFragment : Fragment() {
                 } else {
                     Log.e("api", "Error: ${response.errorBody()}")
                 }
+                Log.d("category", "$categoryChannelItems")
                 categoryChannelViewModel.categoryChannel(categoryChannelItems)
             }
 
