@@ -29,7 +29,6 @@
                 android:text="Most Popular Videos"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/oagothic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +53,6 @@
                 android:background="@color/primary_green"
                 android:gravity="center"
                 android:hint="카테고리"
-                android:fontFamily="@font/oagothic"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/black"
@@ -100,7 +98,6 @@
                 android:text="Channels by Category"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/oagothic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewCategory" />
 

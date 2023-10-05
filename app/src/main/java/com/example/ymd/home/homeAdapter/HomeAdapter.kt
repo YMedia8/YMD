@@ -54,7 +54,6 @@ class HomeAdapter(private var homeList: MutableList<HomeItemModel>) : RecyclerVi
     inner class Holder(binding: ItemRecyclerViewListBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener{
         val title = binding.title
         var webView: WebView = binding.imageView
-        var playbt: ImageView = binding.playButton
         val information = binding.information
         val context: Context = itemView.context
 

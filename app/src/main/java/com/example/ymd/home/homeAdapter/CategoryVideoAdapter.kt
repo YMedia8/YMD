@@ -53,7 +53,6 @@ class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoIt
     inner class Holder(binding: ItemRecyclerViewListBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener{
         val title = binding.title
         var webView: WebView = binding.imageView
-        var playbt: ImageView = binding.playButton
         val information = binding.information
         val context: Context = itemView.context
 
@@ -71,16 +70,6 @@ class CategoryVideoAdapter(private var categoryList: MutableList<CategoryVideoIt
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when(view.id){
-                R.id.playbt -> {
-                    val currentItem = categoryList[position]
-                    val url = currentItem.getVideoUrl()
-                    if (url.isNotEmpty()){
-                        isWebViewVisible = true
-                        notifyItemChanged(position)
-
-                        webView.loadUrl(url)
-                    }
-                }
                 R.id.information -> {
                     val intent = Intent(context, DetailActivity::class.java)
                     intent.apply {
