@@ -33,7 +33,6 @@
         app:layout_constraintTop_toBottomOf="@+id/hotweb"
         app:layout_constraintBottom_toTopOf="@+id/subTitle" />
 
-
     <TextView
         android:id="@+id/subTitle"
         android:layout_width="0dp"
@@ -50,33 +49,13 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ImageView
-        android:id="@+id/plusbt"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subTitle" />
-
-    <ImageView
-        android:id="@+id/playbt"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="7dp"
-        android:src="@drawable/ic_start"
-        app:layout_constraintStart_toEndOf="@+id/plusbt"
-        app:layout_constraintTop_toBottomOf="@+id/subTitle" />
-
-    <ImageView
         android:id="@+id/inforbt"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/ic_information"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subTitle" />
 
     <View
@@ -86,5 +65,5 @@
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/plusbt" />
+        app:layout_constraintTop_toBottomOf="@+id/inforbt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,15 +52,11 @@ class HotAdapter(private val mContext: Context) :
         var tv_title: TextView = binding.title
         var hotsubtitle: TextView = binding.subTitle
         var cl_thumb_item: ConstraintLayout = binding.clThumbItem
-        var plusbt: ImageView = binding.plusbt
-        var playbt: ImageView = binding.playbt
         var inforbt: ImageView = binding.inforbt
         var webView: WebView = binding.hotweb
 
         init {
             cl_thumb_item.setOnClickListener(this)
-            plusbt.setOnClickListener(this)
-            playbt.setOnClickListener(this)
             inforbt.setOnClickListener(this)
 
             webView.settings.javaScriptEnabled = true // JavaScript 활성화 (영상 재생을 위해 필요)
@@ -76,29 +72,6 @@ class HotAdapter(private val mContext: Context) :
             val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return
 
             when (view.id) {
-                R.id.plusbt -> {
-                    val video = items[position]
-
-                    video.favorites = !video.favorites
-
-                    if(video.favorites){
-                        (mContext as MainActivity).addLikedVideo(video)
-                    }
-                    else {
-                        (mContext as MainActivity).removeLikedVideo(video)
-                    }
-                    notifyItemChanged(position)
-                }
-                R.id.playbt -> {
-                    val currentItem = items[position]
-                    val url = currentItem.getVideoUrl() // YouTube 비디오 URL을 가져옴
-                    if (url.isNotEmpty()) {
-                        isWebViewVisible = true
-                        notifyItemChanged(position)
-
-                        webView.loadUrl(url)
-                    }
-                }
                 R.id.inforbt -> {
                     val intent = Intent(mContext, DetailActivity::class.java)
                     intent.apply {
