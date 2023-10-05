@@ -53,7 +53,12 @@
 <details>
     <summary>home</summary>
     <div markdown="1"> 
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 그그그 뭐더라
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 각 비디오 아이템 선택시 Detail로 이동
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여  인기 영상 표시
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ categoryAPI를 사용하여 카테고리 리스트 스피너에 표시
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여 category 클릭 시 관련 영상 표시
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ channelAPI를 사용하여 category 클릭 시 관련 채널을 표시
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ webview를 사용하여 동영상 재생기능 추가
     </div>
 </details>
 <details>
@@ -63,12 +68,15 @@
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ data값중 descriptor(설명), title(제목), thumbnail(사진), id(url) 로 사용<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ webview를 사용하여 동영상 재생기능 추가<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 받아온 thumbnail 값 대신 webview에 id값을 넣어 적용<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 버튼 클릭시 디테일 페이지 이동 및 데이터 전달
     </div>
 </details>
 <details>
     <summary>myVideo</summary>
     <div markdown="1"> 
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 그그그 뭐더라
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 사용자의 개인정보<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 프로필 사진, 이름 등 개인정보 상단에 표시<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ detail에서 좋아요 버튼 클릭 시 보관함으로 저장<br/>
     </div>
 </details>
 <details>
@@ -78,6 +86,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 검색 창에 검색하여 사용자가 원하는 데이터를 보여줌<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 화면 이동시 fade in, fade out 애니메이션<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 비디오 클릭 시 디테일 프레그먼트로 리사이클러뷰 아이템 데이터들 전송<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 모든 카테고리 별 검색 기능 추가<br/>
         </div>
 </details>
 <details>
