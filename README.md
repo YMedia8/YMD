@@ -53,11 +53,11 @@
 <details>
     <summary>home</summary>
     <div markdown="1"> 
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 각 비디오 아이템 선택시 Detail로 이동
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여  인기 영상 표시
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ categoryAPI를 사용하여 카테고리 리스트 스피너에 표시
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여 category 클릭 시 관련 영상 표시
-        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ channelAPI를 사용하여 category 클릭 시 관련 채널을 표시
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ 각 비디오 아이템 선택시 Detail로 이동<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여  인기 영상 표시<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ categoryAPI를 사용하여 카테고리 리스트 스피너에 표시<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ videoAPI를 사용하여 category 클릭 시 관련 영상 표시<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; ▪️ channelAPI를 사용하여 category 클릭 시 관련 채널을 표시<br/>
         &nbsp;&nbsp;&nbsp;&nbsp; ▪️ webview를 사용하여 동영상 재생기능 추가
     </div>
 </details>
