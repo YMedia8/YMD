@@ -26,7 +26,9 @@ import com.example.ymd.hot.HotItemModel
 import com.example.ymd.retrofit.Constants
 import com.example.ymd.retrofit.YMDClient
 import com.example.ymd.retrofit.YMDClient.api
+import com.example.ymd.retrofit.search.Search
 import com.example.ymd.retrofit.youtubeData.VideoData
+import com.example.ymd.search.SearchItemModel
 import com.google.android.material.snackbar.Snackbar
 import org.w3c.dom.Text
 import retrofit2.Call
@@ -46,6 +48,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var img:String
     private lateinit var title:String
+    private var categoryId:String="0"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -75,15 +78,16 @@ class DetailActivity : AppCompatActivity() {
                 binding.detailLike.setText("UNLIKE")
                 binding.linearLike.setBackgroundColor(Color.parseColor("#F06292"))
                 Snackbar.make(binding.constraintLayout2,"Mypage에 저장되었습니다.", Snackbar.LENGTH_SHORT).show()
-                likeVideo = true
                 Utils.addPrefItem(this, HotItemModel("", title, img,"",true ))
+                likeVideo=true
             }
             else {
                 binding.detailLike.setText("LIKE")
+                Snackbar.make(binding.constraintLayout2,"Mypage에서 삭제되었습니다.", Snackbar.LENGTH_SHORT).show()
                 binding.linearLike.setBackgroundColor(Color.parseColor("#9575CD"))
-                likeVideo = false
+                Utils.deletePrefItem(this,img)
+                likeVideo=false
             }
-
         }
 
 
@@ -91,18 +95,15 @@ class DetailActivity : AppCompatActivity() {
 
 
         setupViews()
-        fetchImageResults()
 
 
         btn_close.setOnClickListener {     // 종료 누르면 main화면으로 돌아가기
-
             finish()
         }
     }
 
     //공유 기능
     private fun shareAction() {
-
         val share = findViewById<Button>(R.id.detail_share)
         share.setOnClickListener {
             val shareIntent = Intent().apply {
@@ -126,15 +127,34 @@ class DetailActivity : AppCompatActivity() {
         binding.dtRv.adapter = adapter
         binding.dtRv.itemAnimator = null
 
+        val id=intent.getStringExtra("id")
+        val videoId=id!!.substring(30,id!!.length)
+        api.categorySearch("snippet", "KR", Constants.AUTH_HEADER, videoId)
+            ?.enqueue(object :Callback<VideoData?>{
+                override fun onResponse(call: Call<VideoData?>, response: Response<VideoData?>) {
+                    if(response.isSuccessful){
+                        response.body()!!.items.forEach {
+                            val id=it.snippet.categoryId
+                            categoryId=id
+                        }
+                    }
+                    fetchImageResults(categoryId)
+                }
+                override fun onFailure(call: Call<VideoData?>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
+
     }
     //api 연결
-    private fun fetchImageResults() {
+    private fun fetchImageResults(categoryId:String) {
         api.video(
             part = "snippet",
             chart = "mostPopular",
             maxResults = 20,
             regionCode = "KR",
-            Constants.AUTH_HEADER
+            Constants.AUTH_HEADER,
+            categoryId
         ).enqueue(object : Callback<VideoData?> {
             override fun onResponse(
                 call: Call<VideoData?>,

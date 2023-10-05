@@ -11,7 +11,13 @@ import retrofit2.http.Query
 
 
 interface Interface {
-
+    @GET("videos")
+    fun categorySearch (
+        @Query("part") part : String,
+        @Query("regionCode") regionCode :String,
+        @Query("key") apiKey: String,
+        @Query("id") id : String,
+    ):  Call<VideoData?>
     @GET("videos")
     fun video (
         @Query("part") part : String,

@@ -43,8 +43,6 @@ class MypageFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-//        val mainActivity = activity as MainActivity
-//        likedVideo = mainActivity.likeVideo
         likedVideo=Utils.getPrefBookmarkItems(mypageContext)
         adapter.video = likedVideo.toMutableList()
         adapter.notifyDataSetChanged()
